@@ -106,3 +106,8 @@ input[type=text]
     color: white;
 
 }
+
+.error{
+    border: 4px solid red;
+}
+

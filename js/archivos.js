@@ -97,6 +97,9 @@ function TraerAutos()
                 }
                 bool=!bool;
                 //row.addEventListener("dblclick",modificar); //aCA DEBERIA MODIFICAR FECHA Y ENMVIAR DIRECTO CUANDO CAMBIE ESTADO DE CBOBOX
+                tdFecha.addEventListener("change",modificar);
+            
+            
             }
         }
         
@@ -105,12 +108,17 @@ function TraerAutos()
     peticionHttp.send();  
 }
 
+function modificar(event)
+{
+    fila=event.target.parentNode;
+    var id = fila.childNodes[0].parentNode[0];
+    alert(id);
+}
+
 function agregar(event)
 {
    
-    // fila=event.target.parentNode;
-    // id1 = fila.childNodes[0].childNodes[0];
-    // alert(id1);
+
     cuadro=$("cargar");
     cuadro.hidden=false;
     
@@ -128,12 +136,22 @@ function agregar(event)
     addd.onclick=function()
     {
         var marca=$("txtMarca").value;
-
+        var ok=true;
         var modelo=$("txtModelo").value;
         var fecha=$("txtAño").value;
         id1=id1+1;
-        alert(id1);
-        if(marca.length>=3 && modelo.length>=3)
+        if(marca.length<3)
+        {
+            $("txtMarca").className="error";
+            ok=false;
+        }
+
+        if(modelo.length<3)
+        {
+            $("txtModelo").className="error";
+            ok=false;
+        }
+        if(ok==true)
         {
             var stringPersona;
             peticionHttp.onreadystatechange=function()
@@ -217,27 +235,7 @@ function agregar(event)
 
     canc.onclick=function()
     {
-        var delId=fila.childNodes[0].innerHTML;
-        var personaJson={"id":delId};
-        stringPersona=JSON.stringify(personaJson); 
-        peticionHttp.onreadystatechange=function()
-        {
-            if(peticionHttp.status == 200 && peticionHttp.readyState == 4)
-            {
-                $("load").style.display = "none";
-                close();
-                fila.removeChild(fila.childNodes[0]);
-                fila.removeChild(fila.childNodes[0]);
-                fila.removeChild(fila.childNodes[0]);
-                fila.removeChild(fila.childNodes[0]);
-                fila.removeChild(fila.childNodes[0]);
-            }           
-
-        }
-        $("load").style.display = "flex";
-        peticionHttp.open("POST","http://localhost:3000/eliminar",true);
-        peticionHttp.setRequestHeader("Content-type","application/json");
-        peticionHttp.send(stringPersona);
+        close();
     }
 }
 
