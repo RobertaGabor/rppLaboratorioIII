@@ -1,0 +1,108 @@
+.titulos
+{
+    color:pink; font-size: 3rem;
+    display: inline;
+}
+select
+{
+    background:none;
+    border: none;
+    font-size: large;
+    flex-wrap: wrap;
+
+}
+#myTable tr td:nth-child(1), #myTable th:nth-child(1) {
+    display: none;
+}
+.loader
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+table
+{
+    
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+th
+{
+    background-color:palevioletred;
+    color: white;
+    padding: 8px;
+    text-align: left;
+}
+td
+{
+    padding: 8px;
+}
+.td1
+{
+    
+    background-color: pink;
+
+}
+.td2
+{
+   
+    background-color: plum;
+}
+.contain{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+.grilla
+{
+    background-color: lightskyblue;
+    top: 135px;
+    position: absolute;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    
+    
+}
+.chau
+{
+    font-size: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: pink;
+    border: none;
+    width: auto;
+    color: white;
+    
+    
+
+}
+label
+{
+    font-size:15px;
+    
+}
+input[type=text]
+{
+    width: 75%;
+    height: 20px;
+    padding: 3px;
+}
+.hola
+{
+    margin-left: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: greenyellow;
+    border: none;
+    width: auto;
+    color: white;
+
+}

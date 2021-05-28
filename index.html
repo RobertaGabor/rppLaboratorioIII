@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script type=text/javascript src="./js/archivos.js"></script>
+</head>
+<body>
+    
+    <h2 class="titulos">MARAVILLOSOS AUTOS</h2><input style="float: right;" type="button" value="Agregar" class="hola" id="alta">
+    <div class="contain">
+        <div class="grilla" id="cargar" hidden>
+            <button class="chau" id="close">X</button><br><br>  
+            <label for="txtMarca">Marca</label><br><br>
+            <input type="text" name="" id="txtMarca"><br><br>
+            <label for="txtModelo">Modelo</label><br><br>
+            <input type="text" name="" id="txtModelo"><br><br>
+            <select name="select" id="txtAño">
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+            </select><br><br>
+            <input type="button" value="Cancelar" class="chau" id="no"><input type="button" class="hola" value="Aceptar" id="yes">
+        </div>
+    </div>
+    <div class="loader" id="load">
+        <!--imagen-->
+        <img src="img/1458025209_Nyan cat.gif">
+    </div>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+            </tr>            
+        </thead>
+        <tbody id="tcuerpo">
+        </tbody>
+    </table>
+</body>
+</html>
