@@ -77,11 +77,15 @@ function TraerAutos()
                 tdFecha.appendChild(o);
                 for(y=2000;y<2021;y++)
                 {
-                    o= document.createElement("option");
-                    o.setAttribute("value","example");
-                    cboFecha=document.createTextNode(y);
-                    o.appendChild(cboFecha);
-                    tdFecha.appendChild(o);
+                    if(y!=listaAutos[i].year)
+                    {
+                        o= document.createElement("option");
+                        o.setAttribute("value","example");
+                        cboFecha=document.createTextNode(y);
+                        o.appendChild(cboFecha);
+                        tdFecha.appendChild(o);                       
+                    }
+
                     
                 }
 
@@ -113,10 +117,11 @@ function modificar(event)
 {
     fila=event.target.parentNode;
     var id = fila.childNodes[0].childNodes[0].textContent;
-    var anio=fila.childNodes[3].childNodes[0].textContent;
     var stringPersona;
+
     peticionHttp.onreadystatechange=function()
     {
+        var anio=fila.childNodes[3].selected.innerHtml;
         var personaJson={"id":id,"year":anio};
 
         stringPersona=JSON.stringify(personaJson); 
@@ -205,7 +210,12 @@ function agregar(event)
                     tdFecha.setAttribute("year","mySelect");
     
                     var o;
-                    var cboFecha
+                    var cboFecha;
+                    o= document.createElement("option");
+                    o.setAttribute("value","example");
+                    cboFecha=document.createTextNode(fecha);
+                    o.appendChild(cboFecha);
+                    tdFecha.appendChild(o);
                     for(y=2000;y<2021;y++)
                     {
                         o= document.createElement("option");
@@ -215,11 +225,7 @@ function agregar(event)
                         tdFecha.appendChild(o);
                         
                     }
-                    o= document.createElement("option");
-                    o.setAttribute("value","example");
-                    cboFecha=document.createTextNode(fecha);
-                    o.appendChild(cboFecha);
-                    tdFecha.appendChild(o);
+
                     
                     row.appendChild(tdFecha);
     
