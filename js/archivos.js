@@ -113,13 +113,11 @@ function modificar(event)
 {
     fila=event.target.parentNode;
     var id = fila.childNodes[0].childNodes[0].textContent;
-    var marca=fila.childNodes[1].childNodes[0].textContent;
-    var modelo=fila.childNodes[2].childNodes[0].textContent;
     var anio=fila.childNodes[3].childNodes[0].textContent;
     var stringPersona;
     peticionHttp.onreadystatechange=function()
     {
-        var personaJson={"id":id,"make":marca,"model":modelo,"year":anio};
+        var personaJson={"id":id,"year":anio};
 
         stringPersona=JSON.stringify(personaJson); 
         if(peticionHttp.status == 200 && peticionHttp.readyState == 4)
@@ -137,11 +135,6 @@ function modificar(event)
         peticionHttp.open("POST","http://localhost:3000/editarYear",true);
         peticionHttp.setRequestHeader("Content-type","application/json");
         peticionHttp.send(stringPersona);
-
-
-
-    alert(anio);
-    
 }
 
 function agregar(event)
