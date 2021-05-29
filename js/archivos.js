@@ -70,6 +70,11 @@ function TraerAutos()
                 var o;
                 //var cboFecha=document.createTextNode(listaAutos[i].year);
                 var cboFecha
+                o= document.createElement("option");
+                o.setAttribute("value","example");
+                cboFecha=document.createTextNode(listaAutos[i].year);
+                o.appendChild(cboFecha);
+                tdFecha.appendChild(o);
                 for(y=2000;y<2021;y++)
                 {
                     o= document.createElement("option");
@@ -79,11 +84,7 @@ function TraerAutos()
                     tdFecha.appendChild(o);
                     
                 }
-                o= document.createElement("option");
-                o.setAttribute("value","example");
-                cboFecha=document.createTextNode(listaAutos[i].year);
-                o.appendChild(cboFecha);
-                tdFecha.appendChild(o);
+
                 
                 row.appendChild(tdFecha);
 
@@ -111,8 +112,36 @@ function TraerAutos()
 function modificar(event)
 {
     fila=event.target.parentNode;
-    var id = fila.childNodes[0].parentNode[0];
-    alert(id);
+    var id = fila.childNodes[0].childNodes[0].textContent;
+    var marca=fila.childNodes[1].childNodes[0].textContent;
+    var modelo=fila.childNodes[2].childNodes[0].textContent;
+    var anio=fila.childNodes[3].childNodes[0].textContent;
+    var stringPersona;
+    peticionHttp.onreadystatechange=function()
+    {
+        var personaJson={"id":id,"make":marca,"model":modelo,"year":anio};
+
+        stringPersona=JSON.stringify(personaJson); 
+        if(peticionHttp.status == 200 && peticionHttp.readyState == 4)
+        {
+            
+            $("load").style.display = "none";
+            close();
+            fila.childNodes[3].childNodes[0]=anio;
+
+        }
+
+        
+    }
+        $("load").style.display = "flex";
+        peticionHttp.open("POST","http://localhost:3000/editarYear",true);
+        peticionHttp.setRequestHeader("Content-type","application/json");
+        peticionHttp.send(stringPersona);
+
+
+
+    alert(anio);
+    
 }
 
 function agregar(event)
@@ -121,14 +150,7 @@ function agregar(event)
 
     cuadro=$("cargar");
     cuadro.hidden=false;
-    
-    // var txtmarca;
-    // var txtmodelo;
-    // var dateFecha;
-    
-    // txtmarca=fila.cells[1].innerHTML;
-    // dateFecha=fila.cells[3].innerHTML;
-    // txtmodelo=fila.cells[2].innerHTML;
+
     var addd=$("yes");
     var canc=$("no");
 
