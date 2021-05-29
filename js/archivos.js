@@ -121,7 +121,7 @@ function modificar(event)
 
     peticionHttp.onreadystatechange=function()
     {
-        var anio=fila.childNodes[3].selected.innerHtml;
+        var anio=fila.childNodes[3].childNodes[0].textContent;
         var personaJson={"id":id,"year":anio};
 
         stringPersona=JSON.stringify(personaJson); 
